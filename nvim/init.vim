@@ -1,29 +1,118 @@
+
+" ref: 
+" - A good vimrc: https://dougblack.io/words/a-good-vimrc.html
+
+
+
+" ====
+" Baisc configuration
+" ====
+" Colors
+syntax enable           " enable syntax processing
+" Space and Tabs
+set tabstop=4       " number of visual spaces per TAB
+set softtabstop=4   " number of spaces in tab when editing
+set expandtab       " tabs are spaces
+
+" UI Config
+set number              " show line numbers
+set showcmd             " show command in bottom bar
+set cursorline          " highlight current line
+filetype indent on      " load filetype-specific indent files
+set wildmenu            " visual autocomplete for command menu
+set lazyredraw          " redraw only when we need to.
+set showmatch           " highlight matching [{()}]
+
+" Searching
+set incsearch           " search as characters are entered
+set hlsearch            " highlight matches
+" turn off search highlight
+" nnoremap <LEADER><space> :nohlsearch<CR>
+
+" Folding
+set foldenable          " enable folding
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
+" space open/closes folds
+" nnoremap z za
+set foldmethod=indent   " fold based on indent level
+
+
+" basic config
+set nocompatible  " 不与 Vi 兼容（采用 Vim 自己的操作命令）
+set mouse=a
+
+
+
+set nocompatible
+set encoding=utf-8  
+set t_Co=256
+filetype indent on
+
+
+set relativenumber
+set scrolloff=4
+
+
+" =====
+" Custom bindings
+" =====
+" Movement
+" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" $/^ doesn't do anything
+nnoremap $ <nop>
+nnoremap ^ <nop>
+
+" highlight last inserted text
+nnoremap gV `[v`]
+
+" U/E keys for 5 times u/e (faster navigation)
+noremap <silent> K 5k
+noremap <silent> J 5j
+
+" =====
+" Leader Shortcuts
+" =====
+" leader is comma
+let mapleader=" "
+"jj is esc 
+inoremap jj <ESC>
+
+" edit vimrc/zshrc and load vimrc bindings
+nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>ef :vsp ~/.config/fish/config.fish<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+
+" =====
+" Plug
+" =====
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'connorholyday/vim-snazzy'
 Plug 'mbbill/undotree'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'mhinz/vim-startify'
 Plug 'SirVer/ultisnips'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'honza/vim-snippets'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+
 " Initialize plugin system
 call plug#end()
 
 colorscheme snazzy
 
-" basic config
-set mouse=a
+let g:python_host_prog='/usr/local/bin/python'
+let g:python3_host_prog='/usr/local/opt/python/libexec/bin/python'
 
-let mapleader=" "
-inoremap jj <ESC>
-
-
-syntax on
-set number
-set relativenumber
-set scrolloff=4
 
 " window
 " open new window
@@ -52,9 +141,8 @@ map tu :tabe<CR>
 map th :-tabnext<CR>
 map tl :+tabnext<CR>
 
-" =
-" == coc
-" =
+" ==
+" coc
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -183,82 +271,3 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-
-" ===
-" markdonw
-
-" set to 1, nvim will open the preview window after entering the markdown buffer
-" default: 0
-let g:mkdp_auto_start = 0
-
-" set to 1, the nvim will auto close current preview window when change
-" from markdown buffer to another buffer
-" default: 1
-let g:mkdp_auto_close = 1
-
-" set to 1, the vim will refresh markdown when save the buffer or
-" leave from insert mode, default 0 is auto refresh markdown as you edit or
-" move the cursor
-" default: 0
-let g:mkdp_refresh_slow = 0
-
-" set to 1, the MarkdownPreview command can be use for all files,
-" by default it can be use in markdown file
-" default: 0
-let g:mkdp_command_for_global = 0
-
-" set to 1, preview server available to others in your network
-" by default, the server listens on localhost (127.0.0.1)
-" default: 0
-let g:mkdp_open_to_the_world = 0
-
-" use custom IP to open preview page
-" useful when you work in remote vim and preview on local browser
-" more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
-" default empty
-let g:mkdp_open_ip = ''
-
-" specify browser to open preview page
-" default: ''
-let g:mkdp_browser = ''
-
-" set to 1, echo preview page url in command line when open preview page
-" default is 0
-let g:mkdp_echo_preview_url = 0
-
-" a custom vim function name to open preview page
-" this function will receive url as param
-" default is empty
-let g:mkdp_browserfunc = ''
-
-" options for markdown render
-" mkit: markdown-it options for render
-" katex: katex options for math
-" uml: markdown-it-plantuml options
-" maid: mermaid options
-" disable_sync_scroll: if disable sync scroll, default 0
-" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
-"   middle: mean the cursor position alway show at the middle of the preview page
-"   top: mean the vim top viewport alway show at the top of the preview page
-"   relative: mean the cursor position alway show at the relative positon of the preview page
-" hide_yaml_meta: if hide yaml metadata, default is 1
-" sequence_diagrams: js-sequence-diagrams options
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {}
-    \ }
-
-" use a custom markdown style must be absolute path
-let g:mkdp_markdown_css = ''
-
-nmap <C-s> <Plug>MarkdownPreview
-nmap <M-s> <Plug>MarkdownPreviewStop
-nmap <C-p> <Plug>MarkdownPreviewToggle
