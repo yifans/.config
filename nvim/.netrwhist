@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
-let g:netrw_dirhist_1='/private/tmp/test'
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/Users/yifans/code/bx_dpm/dpm_fe/src/pages/Dashboard'
+let g:netrw_dirhist_3='/Users/yifans/code/bx_dpm/dpm_fe/src/pages'
+let g:netrw_dirhist_2='/Users/yifans/code/bx_dpm/dpm_fe/src'
+let g:netrw_dirhist_1='/Users/yifans/code/bx_dpm/dpm_fe'
