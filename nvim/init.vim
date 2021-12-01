@@ -70,7 +70,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot' "A collection of language packs for Vim.
-Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-fugitive'
@@ -79,9 +78,9 @@ Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
 Plug 'yggdroot/indentline'
 Plug 'vimwiki/vimwiki'
-Plug 'rakr/vim-one'
-Plug 'skywind3000/vim-terminal-help'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " markdown preview
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+
 
 " Initialize plugin system
 call plug#end()
@@ -93,10 +92,15 @@ let g:python_host_prog='/Users/yifans/.config/nvim/nvim_venv2/bin/python'
 let g:python3_host_prog='/Users/yifans/.config/nvim/nvim_venv3/bin/python'
 
 " color
-colorscheme gruvbox
-" colorscheme one
-"set background=light
- set background=dark
+syntax on
+set t_Co=256
+" Use onehalfdark or onehalflight
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
+" lightline
+let g:lightline = { 'colorscheme': 'onehalfdark' }
+
+
 
 " map jj to ESC
 imap jj <Esc>
