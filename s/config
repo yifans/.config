@@ -1,0 +1,9 @@
+provider: google
+
+customProviders [
+  {
+    name: bili
+    url: "https://search.bilibili.com/all?keyword=%s"
+    tags: [bili]
+  }
+]
