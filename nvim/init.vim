@@ -80,7 +80,7 @@ Plug 'yggdroot/indentline'
 Plug 'vimwiki/vimwiki'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " markdown preview
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-
+Plug 'airblade/vim-gitgutter'
 
 " Initialize plugin system
 call plug#end()
