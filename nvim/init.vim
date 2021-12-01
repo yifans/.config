@@ -50,6 +50,9 @@ filetype indent on
 set relativenumber
 set scrolloff=4
 
+" disable concealing for vim markdown
+let g:indentLine_conceallevel = 0
+
 " leader
 let mapleader=","
 
@@ -66,7 +69,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot' "A collection of language packs for Vim.
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-startify'
@@ -78,7 +81,7 @@ Plug 'yggdroot/indentline'
 Plug 'vimwiki/vimwiki'
 Plug 'rakr/vim-one'
 Plug 'skywind3000/vim-terminal-help'
-
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " markdown preview
 
 " Initialize plugin system
 call plug#end()
@@ -92,7 +95,8 @@ let g:python3_host_prog='/Users/yifans/.config/nvim/nvim_venv3/bin/python'
 " color
 colorscheme gruvbox
 " colorscheme one
-set background=dark
+"set background=light
+ set background=dark
 
 " map jj to ESC
 imap jj <Esc>
@@ -103,6 +107,8 @@ map <F4> :NERDTreeToggle<CR>
 
 " fzf.vim
 nnoremap <silent> <C-p> :GFiles<CR>
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
