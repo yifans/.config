@@ -77,12 +77,13 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
 Plug 'yggdroot/indentline'
-Plug 'vimwiki/vimwiki'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " markdown preview
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 
 " Initialize plugin system
@@ -124,4 +125,4 @@ nmap <F8> :TagbarToggle<CR>
 nmap ss <Plug>(easymotion-s2)
 
 " include Coc configuration from github
-source ./coc_config.vim
+source ~/.config/nvim/coc_config.vim
