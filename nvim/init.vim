@@ -104,7 +104,9 @@ let g:airline_theme='onehalfdark'
 " lightline
 let g:lightline = { 'colorscheme': 'onehalfdark' }
 
-
+" IndentLine: https://github.com/Yggdroot/indentLine/issues/59
+set conceallevel=1
+let g:indentLine_conceallevel=1
 
 " map jj to ESC
 imap jj <Esc>
