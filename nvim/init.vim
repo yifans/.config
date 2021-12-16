@@ -80,10 +80,10 @@ Plug 'yggdroot/indentline'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " markdown preview
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'airblade/vim-gitgutter'
-Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-surround'
 
 
 " Initialize plugin system
