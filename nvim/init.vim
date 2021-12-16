@@ -105,15 +105,19 @@ let g:airline_theme='onehalfdark'
 let g:lightline = { 'colorscheme': 'onehalfdark' }
 
 " IndentLine: https://github.com/Yggdroot/indentLine/issues/59
-set conceallevel=1
-let g:indentLine_conceallevel=1
+" set conceallevel=1
+" let g:indentLine_conceallevel=1
 
 " map jj to ESC
 imap jj <Esc>
 
+" auto close vim if NERDTree is the only window open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " NERDTree
-map <F4> :NERDTreeToggle<CR>
+" map <F4> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
+
 
 " fzf.vim
 nnoremap <silent> <C-p> :GFiles<CR>
