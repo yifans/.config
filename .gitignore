@@ -14,3 +14,7 @@ thefuck
 vnote
 yarn
 .isolated-storage
+
+
+node_modules
+list-extensions-history.json
