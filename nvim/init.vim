@@ -20,6 +20,7 @@ filetype indent on      " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
 set lazyredraw          " redraw only when we need to.
 set showmatch           " highlight matching [{()}]
+set colorcolumn=120
 
 " Searching
 set incsearch           " search as characters are entered
