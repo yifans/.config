@@ -118,10 +118,15 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " NERDTree
 " map <F4> :NERDTreeToggle<CR>
 map <C-n> :NERDTreeToggle<CR>
+map <leader>r :NERDTreeFind<cr>
 
+
+" make clipboard work
+set clipboard=unnamed
 
 " fzf.vim
-nnoremap <silent> <C-p> :GFiles<CR>
+nnoremap <silent> <C-p> :Files<CR>
+"nnoremap <silent> <C-p> :GFiles<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 
