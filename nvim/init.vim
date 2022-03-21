@@ -69,7 +69,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot' "A collection of language packs for Vim.
 Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-startify'
@@ -85,7 +85,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
-
+Plug 'neovim/nvim-lspconfig'
+Plug 'ellisonleao/glow.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -137,4 +138,4 @@ nmap <F8> :TagbarToggle<CR>
 nmap ss <Plug>(easymotion-s2)
 
 " include Coc configuration from github
-source ~/.config/nvim/coc_config.vim
+" source ~/.config/nvim/coc_config.vim
