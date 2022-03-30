@@ -64,8 +64,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'preservim/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -88,6 +88,12 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'ellisonleao/glow.nvim'
 Plug 'morhetz/gruvbox'
 Plug 'williamboman/nvim-lsp-installer'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
 
 " Initialize plugin system
 call plug#end()
@@ -111,12 +117,12 @@ colorscheme gruvbox
 imap jj <Esc>
 
 " auto close vim if NERDTree is the only window open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " NERDTree
 " map <F4> :NERDTreeToggle<CR>
-map <C-n> :NERDTreeToggle<CR>
-map <leader>r :NERDTreeFind<cr>
+" map <C-n> :NERDTreeToggle<CR>
+" map <leader>r :NERDTreeFind<cr>
 
 
 " make clipboard work
@@ -137,6 +143,8 @@ nmap ss <Plug>(easymotion-s2)
 " include Coc configuration from github
 " source ~/.config/nvim/coc_config.vim
 
+lua require'nvim-tree'.setup {}
+
 lua <<EOF
 local lsp_installer = require("nvim-lsp-installer")
 
@@ -144,6 +152,7 @@ local lsp_installer = require("nvim-lsp-installer")
 local servers = {
   "pyright",
   "tsserver",
+  "terraformls"
 }
 
 for _, name in pairs(servers) do
@@ -173,3 +182,6 @@ lsp_installer.on_server_ready(function(server)
 end)
 
 EOF
+
+
+source ~/.config/nvim/nvim-tree-config.vim
