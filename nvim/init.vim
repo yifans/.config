@@ -64,12 +64,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'preservim/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot' "A collection of language packs for Vim.
 Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-startify'
@@ -95,6 +90,8 @@ Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'simrat39/symbols-outline.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Initialize plugin system
 call plug#end()
@@ -129,20 +126,17 @@ imap jj <Esc>
 " make clipboard work
 set clipboard=unnamed
 
-" fzf.vim
-nnoremap <silent> <C-p> :Files<CR>
-"nnoremap <silent> <C-p> :GFiles<CR>
-nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <silent> <Leader>b :Buffers<CR>
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
 
 " easymotion
 nmap ss <Plug>(easymotion-s2)
-
-" include Coc configuration from github
-" source ~/.config/nvim/coc_config.vim
 
 lua require'nvim-tree'.setup {}
 
