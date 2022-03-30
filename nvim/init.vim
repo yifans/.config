@@ -93,7 +93,7 @@ Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
-
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Initialize plugin system
 call plug#end()
@@ -144,6 +144,14 @@ nmap ss <Plug>(easymotion-s2)
 " source ~/.config/nvim/coc_config.vim
 
 lua require'nvim-tree'.setup {}
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained",
+}
+EOF
+
 
 lua <<EOF
 local lsp_installer = require("nvim-lsp-installer")
