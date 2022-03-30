@@ -79,7 +79,6 @@ Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
 Plug 'yggdroot/indentline'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " markdown preview
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'
@@ -87,6 +86,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'neovim/nvim-lspconfig'
 Plug 'ellisonleao/glow.nvim'
+Plug 'morhetz/gruvbox'
+Plug 'williamboman/nvim-lsp-installer'
 
 " Initialize plugin system
 call plug#end()
@@ -100,11 +101,7 @@ let g:python3_host_prog='/Users/yifans/.config/nvim/nvim_venv3/bin/python'
 " color
 syntax on
 set t_Co=256
-" Use onehalfdark or onehalflight
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
-" lightline
-let g:lightline = { 'colorscheme': 'onehalfdark' }
+colorscheme gruvbox
 
 " IndentLine: https://github.com/Yggdroot/indentLine/issues/59
 " set conceallevel=1
@@ -139,3 +136,40 @@ nmap ss <Plug>(easymotion-s2)
 
 " include Coc configuration from github
 " source ~/.config/nvim/coc_config.vim
+
+lua <<EOF
+local lsp_installer = require("nvim-lsp-installer")
+
+-- Include the servers you want to have installed by default below
+local servers = {
+  "pyright",
+  "tsserver",
+}
+
+for _, name in pairs(servers) do
+  local server_is_found, server = lsp_installer.get_server(name)
+  if server_is_found and not server:is_installed() then
+    print("Installing " .. name)
+    server:install()
+  end
+end
+
+-- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
+-- or if the server is already installed).
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
+
+    -- (optional) Customize the options passed to the server
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
+    -- end
+
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    -- This setup() function will take the provided server configuration and decorate it with the necessary properties
+    -- before passing it onwards to lspconfig.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(opts)
+end)
+
+EOF
