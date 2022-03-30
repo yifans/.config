@@ -94,6 +94,7 @@ Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'simrat39/symbols-outline.nvim'
 
 " Initialize plugin system
 call plug#end()
