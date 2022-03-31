@@ -127,7 +127,7 @@ imap jj <Esc>
 set clipboard=unnamed
 
 " Find files using Telescope command-line sugar.
-nnoremap <silent> ;f <cmd>Telescope find_files<cr>
+nnoremap <silent> ;f <cmd>Telescope find_files hidden=true<cr>
 nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
 nnoremap <silent> \\ <cmd>Telescope buffers<cr>
 nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
