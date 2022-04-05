@@ -92,6 +92,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'simrat39/symbols-outline.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'sainnhe/gruvbox-material'
 
 " Initialize plugin system
 call plug#end()
@@ -105,7 +106,7 @@ let g:python3_host_prog='/Users/yifans/.config/nvim/nvim_venv3/bin/python'
 " color
 syntax on
 set t_Co=256
-colorscheme gruvbox
+colorscheme gruvbox-material
 
 " IndentLine: https://github.com/Yggdroot/indentLine/issues/59
 " set conceallevel=1
@@ -126,11 +127,17 @@ imap jj <Esc>
 " make clipboard work
 set clipboard=unnamed
 
+" shortcuts
 " Find files using Telescope command-line sugar.
 nnoremap <silent> ;f <cmd>Telescope find_files hidden=true<cr>
 nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
 nnoremap <silent> \\ <cmd>Telescope buffers<cr>
 nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
