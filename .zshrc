@@ -201,8 +201,6 @@ export PATH=$JAVA_HOME/bin:$PATH
 export SPARK_HOME=/Users/yifans/apps/spark3/spark-3.2.1-bin-hadoop3.2
 export PATH=$SPARK_HOME/bin:$PATH
 
-alias docker=nerdctl
-
 # set locale
 # refer to: https://github.com/neovim/neovim/issues/2386
 export LANG=en_US.UTF-8
@@ -217,3 +215,12 @@ export LC_ALL=en_US.UTF-8
 
 
 alias ls=exa
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/yifans/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+## apps
+# nvim
+export PATH=/Users/yifans/apps/nvim-macos/bin:$PATH
+

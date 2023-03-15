@@ -42,6 +42,8 @@ set nocompatible  " 不与 Vi 兼容（采用 Vim 自己的操作命令）
 set mouse=a
 
 
+set smartindent
+
 set nocompatible
 set encoding=utf-8  
 set t_Co=256
@@ -52,10 +54,13 @@ set relativenumber
 set scrolloff=4
 
 " disable concealing for vim markdown
-let g:indentLine_conceallevel = 0
+" let g:indentLine_conceallevel = 0
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
 
 " leader
-let mapleader=","
+let mapleader=" "
 
 
 " vim plug config
@@ -145,12 +150,13 @@ nmap <F8> :TagbarToggle<CR>
 " easymotion
 nmap ss <Plug>(easymotion-s2)
 
+" autocmd BufWrite *.md TableFormat
+
 lua require'nvim-tree'.setup {}
 
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = "maintained",
+  ensure_installed = "all",
 }
 EOF
 
